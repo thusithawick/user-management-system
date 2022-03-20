@@ -27,8 +27,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //custom routes
-        if (! $this->app->routesAreCached()) {
+        // if (! $this->app->routesAreCached()) {
             Passport::routes();
-        }
+        // }
     }
 }

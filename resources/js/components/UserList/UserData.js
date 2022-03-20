@@ -16,7 +16,7 @@ function UserData(props) {
                 <td className="">
                     <button
                         type="button"
-                        className="btn btn-primary"
+                        className="btn btn-sm btn-primary"
                         style={{ float: "right" }}
                         onClick={userUpdateHandler}
                     >
@@ -28,7 +28,7 @@ function UserData(props) {
     });
     return (
         <div className="table-responsive">
-            <table className="table table-stripe">
+            <table className="table table-striped">
                 <thead>
                     <tr>
                         <th>#</th>

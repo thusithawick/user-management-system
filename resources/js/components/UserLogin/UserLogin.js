@@ -8,12 +8,14 @@ function UserLogin(props) {
                 <div className="row">
                     <div className="col-md-6 offset-md-3">
                         <div className={styles["login-container"]}>
-                            <div className="text-center">
+                            <div className={styles["login-header"]}>
                                 <h1>User Login</h1>
                             </div>
-                            <UserLoginForm
-                                loginStatusChange={props.loginStatusChange}
-                            />
+                            <div className={styles["login-body"]}>
+                                <UserLoginForm
+                                    doLogin={props.doLogin}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
