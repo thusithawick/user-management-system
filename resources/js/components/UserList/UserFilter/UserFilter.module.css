@@ -1,0 +1,7 @@
+.user-filter-container {
+    background-color: var(--bs-blue) !important;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
