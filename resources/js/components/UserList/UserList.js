@@ -9,7 +9,10 @@ function UserList(props) {
                 <div
                     className={`${styles["user-list-block"]} col-md-10 offset-md-1`}
                 >
-                    <UserFilter openAddUser={props.openAddUser}></UserFilter>
+                    <UserFilter
+                        openAddUser={props.openAddUser}
+                        changeSearchText={props.changeSearchText}
+                    ></UserFilter>
                     <UserData
                         usersList={props.usersList}
                         openUpdateUser={props.openUpdateUser}

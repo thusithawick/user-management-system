@@ -3,8 +3,12 @@ import UserCreate from "./UserCreate/UserCreate";
 
 function UserCreateModal(props) {
     return (
-        <Modal>
-            <UserCreate closeModal={props.closeModal} />
+        <Modal closeModal={props.closeModal}>
+            <UserCreate
+                closeModal={props.closeModal}
+                updateUserList={props.updateUserList}
+                showMessage={props.showMessage}
+            />
         </Modal>
     );
 }

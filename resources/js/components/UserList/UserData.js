@@ -2,6 +2,7 @@ function UserData(props) {
     const data = props.usersList.map((user) => {
         const userUpdateHandler = () => {
             //console.log('user update clicked');
+            console.log("Open Update User Modal");
             console.log(user);
             props.openUpdateUser(user);
         };
@@ -36,7 +37,7 @@ function UserData(props) {
                         <th>Email</th>
                         <th>Mobile No</th>
                         <th>Age</th>
-                        <th style={{textAlign: "right"}}>Action</th>
+                        <th style={{ textAlign: "right" }}>Action</th>
                     </tr>
                 </thead>
                 <tbody>{data}</tbody>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BASE_URL } from "../../Auth";
 
 function UserUpdate(props) {
     const [formData, setFormData] = useState({
@@ -9,20 +10,71 @@ function UserUpdate(props) {
         age: props.selectedUser.age,
     });
 
-    const saveHandler = () => {};
+    const saveHandler = () => {
+        console.log('updating User');
+        axios
+            .post(
+                BASE_URL + "api/user/update",
+                {
+                    id: props.selectedUser.id,
+                    name: formData.name,
+                    mobile_no: formData.mobile_no,
+                    age: formData.age,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                            "token"
+                        )}`,
+                    },
+                } //We use bearer authentication here
+            )
+            .then(function (response) {
+                console.log("User Updated");
+                props.showMessage("User Updated Successfully!");
+                props.updateUserList();
+                props.closeModal();
+            })
+            .catch(function (error) {
+                props.showMessage(error.response.data.error);
+                console.log(error);
+            });
+    };
+
+    const deleteHandler = () => {
+        console.log('deleting User');
+        axios
+            .post(
+                BASE_URL + "api/user/delete",
+                {
+                    id: props.selectedUser.id,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                            "token"
+                        )}`,
+                    },
+                } //We use bearer authentication here
+            )
+            .then(function (response) {
+                console.log("User Deleted");
+                props.showMessage("User Deleted Successfully!");
+                props.updateUserList();
+                props.closeModal();
+            })
+            .catch(function (error) {
+                props.showMessage(error.response.data.error);
+                console.log(error);
+            });
+    };
 
     const cancelHandler = () => {
-        console.log("canceled");
         props.closeModal();
     };
 
     const nameChangeHandler = (event) => {
         const newFormData = { ...formData, name: event.target.value };
-        setFormData(newFormData);
-    };
-
-    const emailChangeHandler = (event) => {
-        const newFormData = { ...formData, email: event.target.value };
         setFormData(newFormData);
     };
 
@@ -66,8 +118,8 @@ function UserUpdate(props) {
                             type="text"
                             className="form-control"
                             placeholder="Email"
-                            value={formData.email}
-                            onChange={emailChangeHandler}
+                            value={props.selectedUser.email}
+                            readOnly
                         />
                     </div>
                     <div className="mb-3">
@@ -99,10 +151,10 @@ function UserUpdate(props) {
                 </form>
             </div>
             <div className="modal-footer">
-                <button className="btn btn-success">
+                <button className="btn btn-success" onClick={saveHandler}>
                     <i className="fa fa-save"></i> Save
                 </button>
-                <button className="btn btn-danger">
+                <button className="btn btn-danger" onClick={deleteHandler}>
                     <i className="fa fa-trash"></i> Delete
                 </button>
                 <button className="btn btn-primary" onClick={cancelHandler}>

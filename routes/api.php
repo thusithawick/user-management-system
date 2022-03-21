@@ -21,11 +21,13 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::post('user/login', [\App\Http\Controllers\API\UserController::class, 'login']);
-Route::post('user/register', [\App\Http\Controllers\API\UserController::class, 'register']);
 
 Route::middleware('auth:api')->group(function () {
     Route::post('user/check', [\App\Http\Controllers\API\UserController::class, 'check']);
     Route::post('user/all', [\App\Http\Controllers\API\UserController::class, 'all']);
+    Route::post('user/register', [\App\Http\Controllers\API\UserController::class, 'register']);
+    Route::post('user/update', [\App\Http\Controllers\API\UserController::class, 'update']);
+    Route::post('user/delete', [\App\Http\Controllers\API\UserController::class, 'delete']);
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
