@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('react-bootstrap-table-next/dist/react-bootstrap-table2.min.css');
 
 /**
  * Next, we will create a fresh React component instance and attach it to

@@ -8,6 +8,8 @@ import UserUpdateModal from "./UserList/UserUpdateModal";
 import axios from "axios";
 import { BASE_URL } from "./Auth";
 import Notification from "./UI/Notification";
+import TestTable from "./UserList/UserTable";
+import UserTable from "./UserList/UserTable";
 
 //Predefined Placeholder array for user list
 const PREDEFINED_USERS = [

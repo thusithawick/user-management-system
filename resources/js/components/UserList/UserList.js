@@ -1,6 +1,7 @@
 import UserData from "./UserData";
 import UserFilter from "./UserFilter/UserFilter";
 import styles from "./UserList.module.css";
+import UserTable from "./UserTable";
 
 function UserList(props) {
     return (
@@ -13,10 +14,14 @@ function UserList(props) {
                         openAddUser={props.openAddUser}
                         changeSearchText={props.changeSearchText}
                     ></UserFilter>
-                    <UserData
+                    {/* <UserData
                         usersList={props.usersList}
                         openUpdateUser={props.openUpdateUser}
-                    ></UserData>
+                    ></UserData> */}
+                    <UserTable
+                        usersList={props.usersList}
+                        openUpdateUser={props.openUpdateUser}
+                    ></UserTable>
                 </div>
             </div>
         </div>
